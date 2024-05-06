@@ -3,9 +3,11 @@ from azure.iot.device import IoTHubDeviceClient, Message
 import json
 import uuid
 import datetime
-import time
-from dotenv import load_dotenv
 import os
+import time
+import schedule
+from dotenv import load_dotenv
+import logging
 
 # Load environment variables from .env file
 load_dotenv()
@@ -14,7 +16,7 @@ load_dotenv()
 data = {}
 
 # OPC UA server details
-opcua_server_url = "opc.tcp://172.23.177.83:48020"
+opcua_server_url = os.getenv('OPCUA_SERVER_URL')
 nodes_to_read = [
     "ns=4;s=Root.outputs.Digital_Outputs_0",
     "ns=4;s=Root.heating.temperature_reactor",

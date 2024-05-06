@@ -1,0 +1,2 @@
+azure-iot-device~=2.7.0
+opcua~=0.98.9
