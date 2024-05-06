@@ -28,7 +28,7 @@ NODES_TO_READ = [
 # Get environment variables
 OPCUA_SERVER_URL = os.getenv('OPCUA_SERVER_URL')
 CONNECTION_STRING = os.getenv('CONNECTION_STRING')
-SLEEP_TIME =  5
+SLEEP_TIME =  20
 
 # Set a flag to indicate that the socket is open
 socket_is_open = True
@@ -97,16 +97,6 @@ except KeyboardInterrupt:
 finally:
     print("Disconnecting from Azure IoT Hub...")
     azure_client.disconnect()
-    try:
-        opcua_client.disconnect()
-        # If the disconnect is successful, set the flag to False
-        socket_is_open = False
-    except OSError as e:
-        if e.winerror == 10038:  # Ignore the 'not a socket' error
-            pass
-        else:
-            print("Error disconnecting OPC UA client: %s", e)
-    except Exception as e:
-        print("Error disconnecting OPC UA client: %s", e)
+    opcua_client.disconnect()
     print("Disconnected.")
     print("Exiting.")
