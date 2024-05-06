@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv('.env')
 
 # Get environment variables
-OPCUA_SERVER_URL = os.getenv('OPCUA_SERVER_URL')
+OPCUA_SERVER_URL = os.getenv('opc.tcp://172.23.177.83:48020')
 
 def opcua_connect():
     try:
