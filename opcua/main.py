@@ -8,7 +8,7 @@ import uuid
 import time
 from dotenv import load_dotenv
 
-load_dotenv('.env')
+load_dotenv()
 
 # Constants
 DELAY = 5
