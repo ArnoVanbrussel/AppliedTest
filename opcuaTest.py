@@ -4,6 +4,11 @@ import json
 import uuid
 import datetime
 import time
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Create an empty dictionary to store the data
 data = {}
@@ -24,7 +29,7 @@ nodes_to_read = [
 ]
 
 # Azure IoT Hub details
-connection_string = "HostName=iothubavb.azure-devices.net;DeviceId=arnopi;SharedAccessKey=EwKYElUBpLZg3p9LgrDdi3UoMzqV7MkrpAIoTKX+nkg="
+connection_string = os.getenv('CONNECTION_STRING')
 
 # Create an OPC UA client and connect to the server
 opcua_client = Client(opcua_server_url)
